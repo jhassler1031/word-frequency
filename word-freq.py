@@ -1,5 +1,5 @@
 
-with open("sample2.txt") as infile:
+with open("sample.txt") as infile:
     my_file = infile.read()
 
 #Need to normalize all words in the file (remove numbers and punctuation)
@@ -42,6 +42,13 @@ import operator
 
 sorted_list = sorted(word_count.items(), key=operator.itemgetter(1), reverse = True)
 
-for item in sorted_list:
-    print(item)
-    
+count = 0
+
+#following if statement is in case the txt file has less than 20 words
+
+if len(sorted_list) > 20:
+    for count in range(20):
+        print(sorted_list[count])
+else:
+    for item in sorted_list:
+        print(item)
