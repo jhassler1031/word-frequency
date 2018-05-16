@@ -15,7 +15,6 @@ while x < len(my_file):
         y = my_file[x]
         my_file = my_file.replace(y , "")
 
-
 my_file_list = my_file.split()
 
 #Hard mode req: remove ignored words
@@ -30,11 +29,12 @@ ignore_words = ["a" , "able" , "about" , "across" , "after" , "all" , "almost" ,
 "would" , "yet" , "you" , "your"]
 
 
-
 word_count = {}
 
 for word in my_file_list:
-    if word not in word_count.keys():
+    if word not in word_count.keys() and word not in ignore_words:
+        word_count[word] = 0
+    elif word in ignore_words:
         word_count[word] = 0
     word_count[word] += 1
 
