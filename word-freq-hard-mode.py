@@ -6,7 +6,7 @@ with open(my_text) as infile:
 
 my_file = my_file.lower()
 
-my_file = my_file.replace( "." , " ")
+my_file = my_file.replace( "." , " ").replace("\n" , " ")
 
 x = 0
 
