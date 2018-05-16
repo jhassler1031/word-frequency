@@ -1,5 +1,7 @@
 
-with open("sample.txt") as infile:
+my_text = input("Please enter the name of the file to count words: ")
+
+with open(my_text) as infile:
     my_file = infile.read()
 
 my_file = my_file.lower()
@@ -38,10 +40,11 @@ for word in my_file_list:
         word_count[word] = 0
     word_count[word] += 1
 
-#now have a dictionary of words with the count of how many times they are used
+#ignore words are ignored
 
-#now need to sort by occurance and print the top 20 words
-#source for operator: https://stackoverflow.com/questions/613183/how-do-i-sort-a-dictionary-by-value?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+#change numbers to #'s
+for key in word_count:
+    word_count[key] = "#" * word_count[key]
 
 import operator
 
@@ -49,7 +52,6 @@ sorted_list = sorted(word_count.items(), key=operator.itemgetter(1), reverse = T
 
 count = 0
 
-#following if statement is in case the txt file has less than 20 words
 
 if len(sorted_list) > 20:
     for count in range(20):
