@@ -8,7 +8,7 @@ my_file = my_file.lower()
 
 #below is to change periods to spaces so to separate words after next phase of cleanup
 
-my_file = my_file.replace( "." , " ")
+my_file = my_file.replace( "." , " ").replace("\n" , " ")
 
 #remove remaining punctuation and numbers
 
