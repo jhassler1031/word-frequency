@@ -4,6 +4,8 @@ my_text = input("Please enter the name of the file to count words: ")
 with open(my_text) as infile:
     my_file = infile.read()
 
+#begin text normalization
+
 my_file = my_file.lower()
 
 my_file = my_file.replace( "." , " ").replace("\n" , " ")
@@ -19,7 +21,9 @@ while x < len(my_file):
 
 my_file_list = my_file.split()
 
-#Hard mode req: remove ignored words
+#text is normalized and a list of the individual words created
+
+#remove words to be ignored and count occurances of each word
 
 ignore_words = ["a" , "able" , "about" , "across" , "after" , "all" , "almost" , "also" , "am" , "among" , "an" , "and" , "any" , "are" , "as" , "at" ,
 "be", "because" , "been" , "but" , "by" , "can" , "cannot" , "could" , "dear" , "did" , "do" , "does" , "either" , "else" , "ever" , "every" ,
@@ -40,7 +44,7 @@ for word in my_file_list:
         word_count[word] = 0
     word_count[word] += 1
 
-#Normalize the histogram
+#dictionary of words with the count created.  normalize the counts for a more readable histogram
 
 high_num = 0
 
@@ -48,16 +52,21 @@ for key in word_count:
     if word_count[key] > high_num:
         high_num = word_count[key]
 
-norm_factor = high_num / 50
-norm_factor = int(norm_factor)
+#if high_num < 50 no need to normalize
 
-for key in word_count:
-    word_count[key] = int(word_count[key] / norm_factor)
+if high_num > 50:
+    norm_factor = high_num / 50
+    norm_factor = int(norm_factor)
+    for key in word_count:
+        word_count[key] = int(word_count[key] / norm_factor)
 
-#done normalizing
+
+#done normalizing, change numbers to #'s for histogram
 
 for key in word_count:
     word_count[key] = "#" * word_count[key]
+
+#sort the list with operator
 
 import operator
 
@@ -65,6 +74,7 @@ sorted_list = sorted(word_count.items(), key=operator.itemgetter(1), reverse = T
 
 count = 0
 
+#list sorted, display histogram
 
 if len(sorted_list) > 20:
     for count in range(20):
