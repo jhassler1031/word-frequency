@@ -78,7 +78,9 @@ count = 0
 
 if len(sorted_list) > 20:
     for count in range(20):
-        print(sorted_list[count])
+        print(sorted_list[count][0])
+        print(sorted_list[count][1])
 else:
     for item in sorted_list:
-        print(item)
+        print(item[0])
+        print(item[1])
